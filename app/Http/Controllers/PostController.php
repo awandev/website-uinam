@@ -27,12 +27,7 @@ class PostController extends Controller
 
     public function store(Request $request)
     {
-        // // ambil semua request
-        // $post = $request->all();
-        // // untuk slug, pisahkan tersendiri
-        // $post['slug'] = \Str::slug($request->title);
-        // Post::create($post);
-        // return back();
+
 
         // validate the field
         $attr = request()->validate([
@@ -42,5 +37,12 @@ class PostController extends Controller
 
         // assign title to the slug
         $attr['slug']   = \Str::slug(request('title'));
+
+        // create new posts
+        Post::create($attr);
+
+        session()->flash('success', 'The post was created');
+
+        return redirect('posts');
     }
 }
