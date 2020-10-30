@@ -37,8 +37,9 @@
 
                     </div>
 
-                    <div class="card-footer">
+                    <div class="card-footer d-flex justify-content-between">
                         Published on {{ $post->created_at->diffForHumans() }}
+                        <a href="/posts/{{ $post->slug }}/edit" class="btn btn-sm btn-success">Edit</a>
                     </div>
 
                 </div>

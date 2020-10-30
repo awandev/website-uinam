@@ -21,9 +21,11 @@ Route::get('/', function () {
 
 Route::get('posts', [PostController::class, 'index'])->name('posts.index');
 
+Route::get('posts/{post:slug}/show', [PostController::class, 'show']);
+Route::get('posts/{post:slug}/edit', [PostController::class, 'edit']);
+Route::patch('posts/{post:slug}/edit', [PostController::class, 'update']);
 Route::get('posts/create', [PostController::class, 'create'])->name('posts.create');
 Route::post('posts/store', [PostController::class, 'store']);
-// Route::get('posts/{post:slug}', [PostController::class, 'show']);
 
 
 
