@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\PostRequest;
 use App\Models\Post;
 use Illuminate\Support\Str;
-use Illuminate\Http\Request;
 
 class PostController extends Controller
 {
@@ -22,10 +22,12 @@ class PostController extends Controller
 
     public function create()
     {
-        return view('posts.create');
+        return view('posts.create', [
+            'post'  => new Post,
+        ]);
     }
 
-    public function store(Request $request)
+    public function store(PostRequest $request)
     {
 
 

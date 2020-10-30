@@ -12,31 +12,11 @@
             <div class="card">
                 <div class="card-header">New Post</div>
                 <div class="card-body">
+
+
                     <form action="/posts/store" method="post">
                         @csrf
-
-                        <div class="form-group">
-                            <label for="title">Title</label>
-                            <input type="text" name="title" id="title" value="" class="form-control">
-                            @error('title')
-                            <div class="text-danger mt-2">
-                                {{ $message }}
-                            </div>
-                            @enderror
-                        </div>
-
-                        <div class="form-group">
-                            <label for="body">Body</label>
-                            <textarea name="body" id="body" class="form-control"></textarea>
-                            @error('body')
-                            <div class="text-danger mt-2">
-                                {{ $message }}
-                            </div>
-                            @enderror
-                        </div>
-
-                        <button type="submit" class="btn btn-primary">Create</button>
-
+                        @include('posts.partials.form-control', ['submit' => 'Create'])
 
                     </form>
                 </div>
