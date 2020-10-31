@@ -33,7 +33,7 @@
                             {{ Str::limit($post->body, 100, '.') }}
                         </div>
 
-                        <a href="/posts/{{ $post->slug }}">Read More</a>
+                        <a href="/posts/detail/{{ $post->slug }}">Read More</a>
 
                     </div>
 

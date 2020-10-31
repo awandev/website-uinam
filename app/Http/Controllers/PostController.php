@@ -61,5 +61,16 @@ class PostController extends Controller
             'title' => 'required|min:3',
             'body'  => 'required',
         ]);
+
+        $post->update($attr);
+        session()->flash('success', 'The post was updated');
+        return redirect('posts');
+    }
+
+    public function destroy(Post $post)
+    {
+        $post->delete();
+        session()->flash('success', 'The Post was destroyed');
+        return redirect('posts');
     }
 }
