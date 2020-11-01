@@ -9,5 +9,14 @@ class Post extends Model
 {
     use HasFactory;
 
-    protected $guarded = [];
+    protected $fillable = ['title', 'slug', 'body'];
+
+
+    // relasi ke tabel category
+    // karena 1 post hanya memiliki 1 kategori saja, 
+    // maka nama function tidak bersifat plural
+    public function category()
+    {
+        return $this->belongsTo(Category::class);
+    }
 }

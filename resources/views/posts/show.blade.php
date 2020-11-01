@@ -5,6 +5,9 @@
 @section('content')
 <div class="container">
     <h1>{{ $post->title }}</h1>
+    <div class="text-secondary">
+        {{ $post->category->name }}
+    </div>
     <p>{{ $post->body }}</p>
     <div>
 
