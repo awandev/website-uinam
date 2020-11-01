@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\{CategoryController, PostController};
+use App\Http\Controllers\{CategoryController, PostController, TagController};
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -30,5 +30,5 @@ Route::delete('posts/{post:slug}/delete', [PostController::class, 'destroy']);
 
 
 Route::get('categories/{category:slug}', [CategoryController::class, 'show']);
-
+Route::get('tags/{tag:slug}', [TagController::class, 'show']);
 // Route::get('posts/creates', [PostController::class, 'create'])->name('posts.create');

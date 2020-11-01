@@ -9,9 +9,15 @@
 
             @isset($category)
             <h4>Category: {{ $category->name }}</h4>
-            @else
-            <h4>All Posts</h4>
             @endisset
+
+            @isset($tag)
+            <h4>Tag: {{ $tag->name }}</h4>
+            @endisset
+
+            @if(!isset($tag) && !isset($category))
+            <h4>All Posts</h4>
+            @endif
 
 
             <hr />
