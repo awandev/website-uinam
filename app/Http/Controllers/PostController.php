@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\PostRequest;
-use App\Models\Post;
+use App\Models\{Tag, Post, Category};
 use Illuminate\Support\Str;
+use App\Http\Requests\PostRequest;
 
 class PostController extends Controller
 {
@@ -23,25 +23,28 @@ class PostController extends Controller
     public function create()
     {
         return view('posts.create', [
-            'post'  => new Post,
+            'post'          => new Post,
+            'categories'    => Category::get(),
+            'tags'          => Tag::get(),
         ]);
     }
 
     public function store(PostRequest $request)
     {
 
-
-        // validate the field
-        $attr = request()->validate([
-            'title' => 'required|min:3',
-            'body'  => 'required',
-        ]);
+        $attr = $request->all();
 
         // assign title to the slug
         $attr['slug']   = \Str::slug(request('title'));
 
+
+        // category
+        $attr['category_id'] = request('category');
+
         // create new posts
-        Post::create($attr);
+        $post = Post::create($attr);
+
+        $post->tags()->attach(request('tags'));
 
         session()->flash('success', 'The post was created');
 
@@ -51,18 +54,21 @@ class PostController extends Controller
 
     public function edit(Post $post)
     {
-        return view('posts.edit', compact('post'));
+        return view('posts.edit', [
+            'post'  => $post,
+            'categories'    => Category::get(),
+            'tags'  => Tag::get(),
+        ]);
     }
 
 
-    public function update(Post $post)
+    public function update(PostRequest $request, Post $post)
     {
-        $attr = request()->validate([
-            'title' => 'required|min:3',
-            'body'  => 'required',
-        ]);
-
+        $attr = $request->all();
+        $attr['category_id'] = request('category');
         $post->update($attr);
+        $post->tags()->sync(request('tags'));
+
         session()->flash('success', 'The post was updated');
         return redirect('posts');
     }
@@ -70,6 +76,8 @@ class PostController extends Controller
     public function destroy(Post $post)
     {
         $post->delete();
+        // untuk menghapus tags di tabel post_tag
+        $post->tags()->detach();
         session()->flash('success', 'The Post was destroyed');
         return redirect('posts');
     }
