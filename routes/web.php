@@ -29,8 +29,6 @@ Route::post('posts/store', [PostController::class, 'store']);
 Route::delete('posts/{post:slug}/delete', [PostController::class, 'destroy']);
 
 
-
-Route::get('categories', [CategoryController::class, 'index'])->name('category.index');
-Route::get('categories/create', [CategoryController::class, 'create'])->name('category.create');
+Route::get('categories/{category:slug}', [CategoryController::class, 'show']);
 
 // Route::get('posts/creates', [PostController::class, 'create'])->name('posts.create');
