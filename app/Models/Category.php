@@ -9,6 +9,8 @@ class Category extends Model
 {
     use HasFactory;
 
+    protected $fillable = ['name', 'slug'];
+
     // relasi ke tabel post
     // karena 1 kategori memiliki banyak post,
     // maka nama function post bersifat plural menjadi POSTS
