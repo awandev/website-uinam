@@ -41,21 +41,7 @@ class RefreshDatabaseCommand extends Command
     {
         $this->call('migrate:refresh');
 
-        $categories = collect(['Framework', 'Website', 'Development']);
-        $categories->each(function ($c) {
-            \App\Models\Category::create([
-                'name'  => $c,
-                'slug'  => \Str::slug($c),
-            ]);
-        });
-
-        $tags = collect(['Basic', 'Fundamental', 'OOP', 'Operating System', 'Design']);
-        $tags->each(function ($c) {
-            \App\Models\Tag::create([
-                'name'  => $c,
-                'slug'  => \Str::slug($c),
-            ]);
-        });
+        $this->call('db:seed');
 
         $this->info('Sudah melakukan refresh database dan seed default data categories and tags');
     }
