@@ -23,7 +23,13 @@
             <hr />
         </div>
         <div>
+
+            @if (Auth::check())
             <a href="{{ route('posts.create') }}" class="btn btn-primary">New Post</a>
+            @else
+            <a href="{{ route('login') }}" class="btn btn-primary">Login to create new post</a>
+            @endif
+
         </div>
     </div>
 
@@ -46,13 +52,16 @@
                             {{ Str::limit($post->body, 100, '.') }}
                         </div>
 
-                        <a href="/posts/detail/{{ $post->slug }}">Read More</a>
+                        <a href="/posts/{{ $post->slug }}">Read More</a>
 
                     </div>
 
                     <div class="card-footer d-flex justify-content-between">
                         Published on {{ $post->created_at->diffForHumans() }}
+
+                        @auth
                         <a href="/posts/{{ $post->slug }}/edit" class="btn btn-sm btn-success">Edit</a>
+                        @endauth
                     </div>
 
                 </div>

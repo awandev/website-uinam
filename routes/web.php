@@ -14,16 +14,17 @@ use App\Http\Controllers\{CategoryController, HomeController, PostController, Ta
 */
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
-
-
 Route::get('posts', [PostController::class, 'index'])->name('posts.index');
 
-Route::get('posts/detail/{post:slug}', [PostController::class, 'show']);
-Route::get('posts/{post:slug}/edit', [PostController::class, 'edit']);
-Route::patch('posts/{post:slug}/edit', [PostController::class, 'update']);
-Route::get('posts/create', [PostController::class, 'create'])->name('posts.create');
-Route::post('posts/store', [PostController::class, 'store']);
-Route::delete('posts/{post:slug}/delete', [PostController::class, 'destroy']);
+
+Route::prefix('posts')->middleware('auth')->group(function () {
+    Route::get('{post:slug}/edit', [PostController::class, 'edit']);
+    Route::patch('{post:slug}/edit', [PostController::class, 'update']);
+    Route::get('create', [PostController::class, 'create'])->name('posts.create');
+    Route::post('store', [PostController::class, 'store']);
+    Route::delete('{post:slug}/delete', [PostController::class, 'destroy']);
+});
+Route::get('posts/{post:slug}', [PostController::class, 'show']);
 
 
 Route::get('categories/{category:slug}', [CategoryController::class, 'show']);
