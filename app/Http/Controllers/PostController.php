@@ -84,7 +84,7 @@ class PostController extends Controller
 
         // mengecek hanya yang punya post yang dapat melakukan delete
         // gunakan authorize dari PostPolicy
-        $this->authorize('update', $post);
+        $this->authorize('delete', $post);
         session()->flash('success', 'The Post was deleted');
         return redirect('posts');
     }
