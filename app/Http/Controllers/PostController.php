@@ -65,6 +65,10 @@ class PostController extends Controller
 
     public function update(PostRequest $request, Post $post)
     {
+
+        // authorize from postpolicy
+        $this->authorize('update', $post);
+
         $attr = $request->all();
         $attr['category_id'] = request('category');
         $post->update($attr);
@@ -79,15 +83,9 @@ class PostController extends Controller
 
 
         // mengecek hanya yang punya post yang dapat melakukan delete
-        if (auth()->user()->is($post->author)) {
-            $post->delete();
-            // untuk menghapus tags di tabel post_tag
-            $post->tags()->detach();
-            session()->flash('success', 'The Post was destroyed');
-            return redirect('posts');
-        } else {
-            session()->flash('error', 'It was not your post');
-            return redirect('posts');
-        }
+        // gunakan authorize dari PostPolicy
+        $this->authorize('update', $post);
+        session()->flash('success', 'The Post was deleted');
+        return redirect('posts');
     }
 }

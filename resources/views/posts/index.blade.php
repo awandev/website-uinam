@@ -59,9 +59,9 @@
                     <div class="card-footer d-flex justify-content-between">
                         Published on {{ $post->created_at->diffForHumans() }}
 
-                        @if(auth()->user()->is($post->author))
+                        @can('update', $post)
                         <a href="/posts/{{ $post->slug }}/edit" class="btn btn-sm btn-success">Edit</a>
-                        @endif
+                        @endcan
                     </div>
 
                 </div>
