@@ -21,7 +21,7 @@
 
 
         {{-- @if(auth()->user()->is($post->author)) --}}
-        {{-- @if (auth()->user()->id == $post->user_id) --}}
+        @if (auth()->user()->id == $post->user_id)
         <!-- Button trigger modal -->
         <button type="button" class="btn btn-link text-danger btn-sm p-0" data-toggle="modal"
             data-target="#exampleModal">
@@ -66,7 +66,7 @@
                 </div>
             </div>
         </div>
-        {{-- @endif --}}
+        @endif
 
 
 
