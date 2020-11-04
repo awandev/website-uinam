@@ -13,6 +13,12 @@ class TagsTableSeeder extends Seeder
      */
     public function run()
     {
-        //
+        $tags = collect(['Blogging', 'Reading', 'Website', 'Basic', 'Network', 'Skill']);
+        $tags->each(function ($c) {
+            \App\Models\Tag::create([
+                'name'  => $c,
+                'slug'  => \Str::slug($c),
+            ]);
+        });
     }
 }

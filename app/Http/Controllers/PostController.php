@@ -41,8 +41,9 @@ class PostController extends Controller
         // category
         $attr['category_id'] = request('category');
 
-        // create new posts
-        $post = Post::create($attr);
+
+        // create new posts with user id from users table (login)
+        $post = auth()->user()->posts()->create($attr);
 
         $post->tags()->attach(request('tags'));
 
@@ -75,10 +76,18 @@ class PostController extends Controller
 
     public function destroy(Post $post)
     {
-        $post->delete();
-        // untuk menghapus tags di tabel post_tag
-        $post->tags()->detach();
-        session()->flash('success', 'The Post was destroyed');
-        return redirect('posts');
+
+
+        // mengecek hanya yang punya post yang dapat melakukan delete
+        if (auth()->user()->is($post->author)) {
+            $post->delete();
+            // untuk menghapus tags di tabel post_tag
+            $post->tags()->detach();
+            session()->flash('success', 'The Post was destroyed');
+            return redirect('posts');
+        } else {
+            session()->flash('error', 'It was not your post');
+            return redirect('posts');
+        }
     }
 }

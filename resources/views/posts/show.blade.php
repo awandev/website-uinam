@@ -15,7 +15,13 @@
     </div>
     <p>{{ $post->body }}</p>
     <div>
+        <div class="secondary-text">wrote by : {{ $post->author->name }}</div>
 
+
+
+
+        {{-- @if(auth()->user()->is($post->author)) --}}
+        {{-- @if (auth()->user()->id == $post->user_id) --}}
         <!-- Button trigger modal -->
         <button type="button" class="btn btn-link text-danger btn-sm p-0" data-toggle="modal"
             data-target="#exampleModal">
@@ -42,6 +48,8 @@
                             </div>
                         </div>
 
+
+
                         <form action="/posts/{{ $post->slug }}/delete" method="post">
                             @csrf
                             @method("delete")
@@ -58,6 +66,9 @@
                 </div>
             </div>
         </div>
+        {{-- @endif --}}
+
+
 
 
 
