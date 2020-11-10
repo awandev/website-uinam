@@ -1,0 +1,55 @@
+
+/*meta*/
+	.meta .list-inline li{
+		font-size: 13px;
+	}
+/**/
+/*artikel*/
+	.col-side-inner .posts-block .post-thumb img{
+		width: 80px;
+		height: 80px;
+		margin: 0px 0px;
+	}
+/**/
+	.news-section .section-title{
+		color: #212121;
+	}
+.breadcrumb-container{
+	margin-top: 130px;
+}
+          
+    
+        
+/*/*/
+
+
+/*foto dekan*/
+    .leaders-block .item-inner img{
+        width: 90%;
+        height: 50%;
+        margin: 0px 0px;
+    }
+    .col-main .leaders-block .profile-desc{
+        width: 90%;;
+        height: 50%;
+        padding: 15px;
+    }
+    .col-side-inner .file-block .file-intro{
+        padding: 20px;
+    }
+/**/
+
+/*sidebar/senat/gurubesar/dosen/staf*/
+ .main-cols-wrapper .col-main{
+  margin-bottom: 30px;
+ } 
+   .item .item-inner .profile-holder img{
+      width: 250px;
+      height: 240px;
+      margin: 0px;
+     }
+  .modal-body .profile-meta   img{
+    width: 150px;
+    height: 200px;
+    margin:0;
+   }

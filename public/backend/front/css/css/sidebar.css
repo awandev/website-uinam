@@ -1,0 +1,111 @@
+/*sidebar hover*/
+   .panel-heading a{
+      display: block;
+      color: #222222;
+      line-height: 32px;
+      height: 32px;
+      padding-left: 10px;
+      border-radius: 4px;
+      font-size: 15px;
+      font-weight: 700;
+    }
+    .panel-heading .panel-title a:hover {
+      color: #0099e6;
+      font-size: 15px;
+    }
+    .pane-heading a:hover {
+      color: #0099e6;
+      text-decoration: none;
+    }
+    .panel-heading a:hover .fa,  .panel-title a:hover  {
+      font-size: 28px;
+      vertical-align: -5px;
+    }
+/**/
+             
+a {
+  color:#000;
+}
+
+.panel-default>.panel-heading {
+    color: #fff;
+    background-color: #00436a;
+    border-color: #ddd;
+}
+
+.panel-group .panel+.panel {
+    margin-top: 0px;
+}
+
+.panel-collapse {
+	background-color: rgba(237, 210, 50, 0.5);
+}
+
+.glyphicon { 
+margin-right:10px; 
+}
+
+ul.bulletlist li {
+	list-style:disc;
+}
+
+ul.list-group  li a {
+ display:block;
+ padding:5px 0px 5px 15px;
+
+ text-decoration:none;
+}
+
+ul.list-group li {
+	border-bottom: 1px dotted rgba(0,0,0,0.2);
+}
+	
+
+ul.list-group  li a:hover, ul li a:focus {
+ color:#fff;
+ background-color: #00436a;
+}
+
+.panel-title a:hover,
+.panel-title a:active,
+.panel-title a:focus,
+.panel-title .open a:hover,
+.panel-title .open a:active,
+.panel-title .open a:focus
+ {
+	text-decoration:none;
+	color:#000;
+}
+
+
+
+@media (min-width: 768px){
+.navbar-collapse.collapse 
+  	{
+      display: block!important;
+      height: auto!important;
+      padding-bottom: 0;
+      overflow: visible!important;
+  	padding-left:0px; 
+  }
+}
+
+
+}
+
+
+/********** END SIDEBAR *************/
+
+/********** NAVBAR TOGGLE *************/
+
+
+.navbar-toggle {
+    padding: 11px 10px;
+    margin-top: 8px;
+    margin-right: 15px;
+    margin-bottom: 8px;
+    background-color: #a32638;
+    border-radius: 0px;
+}
+
+/********** END NAVBAR TOGGLE *************/

@@ -47,6 +47,9 @@
                         {{ $post->title }}
                     </div>
 
+                    <img style="height: 270px; object-fit: cover; object-position: center;" src="{{ $post->takeImage }}"
+                        class="card-img-top">
+
                     <div class="card-body">
                         <div>
                             {{ Str::limit($post->body, 100, '.') }}

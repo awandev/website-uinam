@@ -9,7 +9,7 @@ class Post extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['title', 'slug', 'body', 'category_id', 'user_id'];
+    protected $fillable = ['title', 'slug', 'body', 'category_id', 'user_id', 'thumbnail'];
 
 
     // relasi ke tabel category
@@ -28,5 +28,10 @@ class Post extends Model
     public function author()
     {
         return $this->belongsTo(User::class, 'user_id');
+    }
+
+    public function getTakeImageAttribute()
+    {
+        return "/storage/" . $this->thumbnail;
     }
 }

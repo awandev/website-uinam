@@ -1,0 +1,18 @@
+ /*foto*/
+ .album-block .item img{
+         margin: 0;
+        width: 170px;
+        height: 150px;
+        border-radius: 10px;
+    }
+/*dekan*/
+    .col-main .file-block .file-thumb-holder img{
+        width: 100%;
+        height: 300px;
+        margin: 0px 0px;
+    }
+/*/dekan*/
+
+
+
+   

@@ -1,0 +1,10 @@
+ /*foto*/
+ .album-block .item img{
+         margin: 0;
+        width: 170px;
+        height: 150px;
+        border-radius: 10px;
+    }
+
+    
+   
